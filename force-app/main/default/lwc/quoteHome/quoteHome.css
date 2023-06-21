@@ -1,0 +1,11 @@
+.quoteHeader {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

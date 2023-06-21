@@ -1,0 +1,9 @@
+.coverage {
+  padding: 3px;
+}
+
+.boxshadow {
+  border: 2px solid gray;
+  display: block;
+  border-radius: 3px;
+}

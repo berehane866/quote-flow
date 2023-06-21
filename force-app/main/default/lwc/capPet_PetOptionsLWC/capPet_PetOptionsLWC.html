@@ -1,0 +1,298 @@
+<template>
+    <div class="slds-m-vertical_large slds-text-align_center">
+        <div class="slds-button-group" role="group">
+            <button class={dogClassBtn} name="Dog" onclick={handleClick}>Dog</button>
+            <button class={catClassBtn} name="Cat" onclick={handleClick}>Cat</button>
+        </div>
+    </div>
+
+    <template if:true={isDog}>
+        <div class="slds-grid slds-wrap">
+            <!-- Essential -->
+            <div class="slds-col slds-size_1-of-3">
+                <div>
+                    <div class="slds-text-align_center slds-size_1-of-1">
+                        <span class="slds-avatar slds-avatar_large">
+                            <img alt={dogEssentialOption.title} src={dogEssentialOption.img} title={dogEssentialOption.title} />
+                        </span>
+                    </div>
+                </div>
+                <div class="pettitleoption">{dogEssentialOption.title}</div>
+                <div class="slds-text-align_center">Starting at</div>
+                <div class="slds-text-align_center priceOption">{dogEssentialOption.price}</div>
+                <div class="slds-text-align_center maxWidth">{dogEssentialOption.description}</div>
+                <div class="slds-text-align_center slds-m-vertical_large">
+                    <button class="slds-button slds-button_neutral buttonQuote" onclick={invokeQuotepage}>Get a quote</button>
+                </div>
+                <ul class="customUL">
+                    <template for:each={dogEssentialOption.options} for:item="currentItem">
+                        <li key={currentItem.label}>
+                            <div class="slds-size_1-of-1">
+                                <div class="slds-media slds-media_small">
+                                    <div class="slds-media__figure">
+                                        <template if:true={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCheck">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#check"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                        <template if:false={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCancel">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p>{currentItem.label}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+
+            <!-- Plus -->
+           <div class="slds-col slds-size_1-of-3">
+                <div>
+                    <div class="slds-text-align_center slds-size_1-of-1">
+                        <span class="slds-avatar slds-avatar_large">
+                            <img alt={dogPlusOption.title} src={dogPlusOption.img} title={dogPlusOption.title} />
+                        </span>
+                    </div>
+                </div>
+                <h1 class="slds-text-align_center titleOption">{dogPlusOption.title}</h1>
+                <div class="slds-text-align_center">Starting at</div>
+                <div class="slds-text-align_center priceOption">{dogPlusOption.price}</div>
+                <div class="slds-text-align_center maxWidth">{dogPlusOption.description}</div>
+                <div class="slds-text-align_center slds-m-vertical_large">
+                    <button class="slds-button slds-button_neutral buttonQuote" onclick={invokeQuotepage}>Get a quote</button>
+                </div>
+                <ul class="customUL">
+                    <template for:each={dogPlusOption.options} for:item="currentItem">
+                        <li key={currentItem.label}>
+                            <div class="slds-size_1-of-1">
+                                <div class="slds-media slds-media_small">
+                                    <div class="slds-media__figure">
+                                        <template if:true={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCheck">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#check"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                        <template if:false={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCancel">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p>{currentItem.label}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div> 
+
+            <!-- Elite -->
+           <div class="slds-col slds-size_1-of-3">
+                <div>
+                    <div class="slds-text-align_center slds-size_1-of-1">
+                        <span class="slds-avatar slds-avatar_large">
+                            <img alt={dogEliteOption.title} src={dogEliteOption.img} title={dogEliteOption.title} />
+                        </span>
+                    </div>
+                </div>
+                <h1 class="slds-text-align_center titleOption">{dogEliteOption.title}</h1>
+                <div class="slds-text-align_center">Starting at</div>
+                <div class="slds-text-align_center priceOption">{dogEliteOption.price}</div>
+                <div class="slds-text-align_center maxWidth">{dogEliteOption.description}</div>
+                <div class="slds-text-align_center slds-m-vertical_large">
+                    <button class="slds-button slds-button_neutral buttonQuote" onclick={invokeQuotepage}>Get a quote</button>
+                </div>
+                <ul class="customUL">
+                    <template for:each={dogEliteOption.options} for:item="currentItem">
+                        <li key={currentItem.label}>
+                            <div class="slds-size_1-of-1">
+                                <div class="slds-media slds-media_small">
+                                    <div class="slds-media__figure">
+                                        <template if:true={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCheck">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#check"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                        <template if:false={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCancel">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p>{currentItem.label}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div> 
+        </div>
+    </template>
+
+    <template if:true={isCat}>
+        <div class="slds-grid slds-wrap">
+            <!-- Essential -->
+            <div class="slds-col slds-size_1-of-3">
+                <div>
+                    <div class="slds-text-align_center slds-size_1-of-1">
+                        <span class="slds-avatar slds-avatar_large">
+                            <img alt={catEssentialOption.title} src={catEssentialOption.img} title={catEssentialOption.title} />
+                        </span>
+                    </div>
+                </div>
+                <h1 class="slds-text-align_center titleOption">{catEssentialOption.title}</h1>
+                <div class="slds-text-align_center">Starting at</div>
+                <div class="slds-text-align_center priceOption">{catEssentialOption.price}</div>
+                <div class="slds-text-align_center maxWidth">{catEssentialOption.description}</div>
+                <div class="slds-text-align_center slds-m-vertical_large">
+                    <button class="slds-button slds-button_neutral buttonQuote" onclick={invokeQuotepage}>Get a quote</button>
+                </div>
+                <ul class="customUL">
+                    <template for:each={catEssentialOption.options} for:item="currentItem">
+                        <li key={currentItem.label}>
+                            <div class="slds-size_1-of-1">
+                                <div class="slds-media slds-media_small">
+                                    <div class="slds-media__figure">
+                                        <template if:true={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCheck">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#check"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                        <template if:false={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCancel">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p>{currentItem.label}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+    
+            <!-- Plus -->
+            <div class="slds-col slds-size_1-of-3">
+                <div>
+                    <div class="slds-text-align_center slds-size_1-of-1">
+                        <span class="slds-avatar slds-avatar_large">
+                            <img alt={catPlusOption.title} src={catPlusOption.img} title={catPlusOption.title} />
+                        </span>
+                    </div>
+                </div>
+                <h1 class="slds-text-align_center titleOption">{catPlusOption.title}</h1>
+                <div class="slds-text-align_center">Starting at</div>
+                <div class="slds-text-align_center priceOption">{catPlusOption.price}</div>
+                <div class="slds-text-align_center maxWidth">{catPlusOption.description}</div>
+                <div class="slds-text-align_center slds-m-vertical_large">
+                    <button class="slds-button slds-button_neutral buttonQuote" onclick={invokeQuotepage}>Get a quote</button>
+                </div>
+                <ul class="customUL">
+                    <template for:each={catPlusOption.options} for:item="currentItem">
+                        <li key={currentItem.label}>
+                            <div class="slds-size_1-of-1">
+                                <div class="slds-media slds-media_small">
+                                    <div class="slds-media__figure">
+                                        <template if:true={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCheck">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#check"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                        <template if:false={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCancel">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p>{currentItem.label}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div> 
+    
+            <!-- Elite -->
+           <div class="slds-col slds-size_1-of-3">
+                <div>
+                    <div class="slds-text-align_center slds-size_1-of-1">
+                        <span class="slds-avatar slds-avatar_large">
+                            <img alt={catEliteOption.title} src={catEliteOption.img} title={catEliteOption.title} />
+                        </span>
+                    </div>
+                </div>
+                <h1 class="slds-text-align_center titleOption">{catEliteOption.title}</h1>
+                <div class="slds-text-align_center">Starting at</div>
+                <div class="slds-text-align_center priceOption">{catEliteOption.price}</div>
+                <div class="slds-text-align_center maxWidth">{catEliteOption.description}</div>
+                <div class="slds-text-align_center slds-m-vertical_large">
+                    <button class="slds-button slds-button_neutral buttonQuote" onclick={invokeQuotepage}>Get a quote</button>
+                </div>
+                <ul class="customUL">
+                    <template for:each={catEliteOption.options} for:item="currentItem">
+                        <li key={currentItem.label}>
+                            <div class="slds-size_1-of-1">
+                                <div class="slds-media slds-media_small">
+                                    <div class="slds-media__figure">
+                                        <template if:true={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCheck">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#check"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                        <template if:false={currentItem.value}>
+                                            <span class="slds-icon_container slds-m-right_xx-small iconCancel">
+                                                <svg class="slds-icon slds-icon_xx-small" aria-hidden="true">
+                                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#close"></use>
+                                                </svg>
+                                            </span>
+                                        </template>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <p>{currentItem.label}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div> 
+        </div>
+    </template>
+</template>

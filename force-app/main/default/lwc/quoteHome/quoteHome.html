@@ -1,0 +1,199 @@
+<!--
+  @description       : 
+  @author            : Bernie Shishaye
+  @group             : 
+  @last modified on  : 06-21-2023
+  @last modified by  : Bernie Shishaye
+-->
+<template>
+  <lightning-card>
+    <span
+      ><div style="text-align: center" class="quoteHeader">
+        Get a quote
+      </div></span
+    >
+
+    <lightning-progress-indicator
+      current-step={currentStep}
+      type="base"
+      has-error="true"
+      variant="base"
+    >
+      <lightning-progress-step
+        label="Step 1"
+        value="1"
+      ></lightning-progress-step>
+      <lightning-progress-step
+        label="Step 2"
+        value="2"
+      ></lightning-progress-step>
+      <lightning-progress-step
+        label="Step 3"
+        value="3"
+      ></lightning-progress-step>
+      <lightning-progress-step
+        label="Step 4"
+        value="4"
+      ></lightning-progress-step>
+      <lightning-progress-step
+        label="Step 5"
+        value="5"
+      ></lightning-progress-step>
+    </lightning-progress-indicator>
+    <template if:true={showZipCode}>
+      <lightning-card>
+        <div>
+          <img class="center" src={imgZipCodeUrl} alt="ZipCode" />
+        </div>
+        <span style="text-align: center" class="spanHeader"
+          >Hi there, let's share your ZIP Code</span
+        >
+        <lightning-input
+          required
+          placeholder="Enter ZIP Code"
+          label="Enter the address which you would like to use for your policy"
+          name="zipCode"
+          value={zipcode}
+          onchange={handleZipChange}
+        ></lightning-input>
+        <br />
+        <div style="text-align: center">
+          <lightning-button-group>
+            <lightning-button
+              variant="Brand"
+              onclick={goToPetInfo}
+              label="Next"
+            ></lightning-button>
+          </lightning-button-group>
+        </div>
+      </lightning-card>
+    </template>
+    <template if:true={showPetInfo}>
+      <lightning-card>
+        <div>
+          <img class="center" src={imgPetInfoUrl} alt="Pet" />
+        </div>
+        <span style="text-align: center" class="spanHeader"
+          >Would you like a dog or Cat quote?</span
+        >
+        <div class="slds-m-vertical_large slds-text-align_center">
+          <div class="slds-button-group" role="group">
+            <button class={dogClassBtn} name="Dog" onclick={handlePetTypeClick}>
+              Dog
+            </button>
+            <button class={catClassBtn} name="Cat" onclick={handlePetTypeClick}>
+              Cat
+            </button>
+          </div>
+        </div>
+        <lightning-input
+          required
+          placeholder="Enter Pet Name"
+          label="What is your pet's name?"
+          name="petName"
+          value={petName}
+          onchange={handlePetNameChange}
+        ></lightning-input>
+        <br />
+        <div style="text-align: center">
+          <lightning-button-group>
+            <lightning-button
+              variant="Neutral"
+              onclick={goToPreviousZipCode}
+              label="Previous"
+            ></lightning-button>
+
+            <lightning-button
+              variant="Brand"
+              onclick={goToPetBreed}
+              label="Next"
+            ></lightning-button>
+          </lightning-button-group>
+        </div>
+      </lightning-card>
+    </template>
+    <template if:true={showPetBreed}>
+      <lightning-card>
+        <div>
+          <img class="center" src={imgPetBreedUrl} alt="Pet" />
+        </div>
+        <lightning-combobox
+          name="petBreed"
+          label="What is your breed?"
+          value=""
+          placeholder="Select Breed"
+          options={petsbreed}
+          onchange={handleBreedChange}
+          required
+        ></lightning-combobox>
+        <lightning-combobox
+          name="petAge"
+          label="Pet's Age?"
+          value=""
+          placeholder="Select Age"
+          options={petsage}
+          onchange={handleAgeChange}
+          required
+        ></lightning-combobox>
+        <br />
+        <div style="text-align: center">
+          <lightning-button-group>
+            <lightning-button
+              variant="Neutral"
+              onclick={goToPrevPetInfo}
+              label="Previous"
+            ></lightning-button>
+
+            <lightning-button
+              variant="Brand"
+              onclick={goToNextEmail}
+              label="Next"
+            ></lightning-button>
+          </lightning-button-group>
+        </div>
+      </lightning-card>
+
+      <c-pet-breed
+        onprevpetbreed={prevPetBreedHandler}
+        onnextpetbreed={nextPetBreedHandler}
+      ></c-pet-breed>
+    </template>
+    <template if:true={showEmail}>
+      <lightning-card>
+        <div>
+          <img class="center" src={imgEmailUrl} alt="Email" />
+        </div>
+        <span style="text-align: center"
+          >To receive a copy of your quote. We respect your privacy and will not
+          sell your personal information.</span
+        >
+        <lightning-input
+          required
+          type="Email"
+          placeholder="you@email.com"
+          label="Enter the address which you would like to use for your policy"
+          name="email"
+        ></lightning-input>
+        <br />
+        <div style="text-align: center">
+          <lightning-button-group>
+            <lightning-button
+              variant="Neutral"
+              onclick={goToPetBreed}
+              label="Previous"
+            ></lightning-button>
+
+            <lightning-button
+              variant="Brand"
+              onclick={goToQuotePrices}
+              label="Next"
+            ></lightning-button>
+          </lightning-button-group>
+        </div>
+      </lightning-card>
+    </template>
+  </lightning-card>
+  <template if:true={showQuotePrices}>
+    <c-quote-prices onprevquoteprices={prevQuotePricesHandler}></c-quote-prices>
+  </template>
+</template>

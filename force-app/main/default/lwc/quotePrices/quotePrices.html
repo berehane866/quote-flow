@@ -1,0 +1,162 @@
+<!--
+  @description       : 
+  @author            : Bernie Shishaye
+  @group             : 
+  @last modified on  : 06-21-2023
+  @last modified by  : Bernie Shishaye
+-->
+<template>
+  <div class="slds-grid slds-gutters">
+    <div class="slds-col">
+      <lightning-card data-id="essential" onclick={selectPlan}>
+        <div style="text-align: center">
+          <img src={essImg} alt="Essential" />
+        </div>
+        <div style="text-align: center">
+          <lightning-formatted-rich-text
+            value="Essential"
+            style="font-size: 36pt; font-weight: bold"
+          >
+          </lightning-formatted-rich-text>
+        </div>
+        <div style="font-size: 36pt; font-weight: bold; text-align: center">
+          $29.99/mo*
+        </div>
+        <div style="text-align: center">Optional benefits not included</div>
+        <br />
+        <div style="text-align: center">
+          <lightning-button
+            variant="brand-outline"
+            label="Select"
+            title="Select"
+            class="slds-m-left_x-small"
+          ></lightning-button>
+        </div>
+        <br />
+
+        <dl class="slds-list_stacked">
+          <template for:each={essentials} for:item="ess">
+            <dt
+              key={ess.Name}
+              class="slds-item_label slds-text-color_weak slds-truncate coverage"
+              title="First Label"
+            >
+              <template if:true={ess.covered}>
+                <img src={checkImg} alt="Covered" />
+              </template>
+              <template if:false={ess.covered}>
+                <img src={xImg} alt="Un Covered" />
+              </template>
+              &nbsp;&nbsp;{ess.Name}
+            </dt>
+          </template>
+        </dl>
+      </lightning-card>
+    </div>
+    <div class="slds-col">
+      <lightning-card class="boxshadow">
+        <div style="text-align: center">
+          <img src={plusImg} alt="Plus" />
+        </div>
+        <div style="text-align: center">
+          <lightning-formatted-rich-text
+            value="Plus"
+            style="font-size: 36pt; font-weight: bold"
+          >
+          </lightning-formatted-rich-text>
+        </div>
+        <div style="font-size: 36pt; font-weight: bold; text-align: center">
+          $35.99/mo*
+        </div>
+        <div style="text-align: center">
+          Includes coverage for Accident & Illness Exam Fees
+        </div>
+        <br />
+        <div style="text-align: center">
+          <lightning-button
+            variant="brand-outline"
+            label="Select"
+            title="Select"
+            class="slds-m-left_x-small"
+          ></lightning-button>
+        </div>
+        <br />
+        <dl class="slds-list_stacked">
+          <template for:each={plus} for:item="ess">
+            <dt
+              key={ess.Name}
+              class="slds-item_label slds-text-color_weak slds-truncate coverage"
+              title="First Label"
+            >
+              <template if:true={ess.covered}>
+                <img src={checkImg} alt="Covered" />
+              </template>
+              <template if:false={ess.covered}>
+                <img src={xImg} alt="Un Covered" />
+              </template>
+              &nbsp;&nbsp;{ess.Name}
+            </dt>
+          </template>
+        </dl>
+      </lightning-card>
+    </div>
+    <div class="slds-col">
+      <lightning-card>
+        <div style="text-align: center">
+          <img src={eliteImg} alt="Elite" />
+        </div>
+        <div style="text-align: center">
+          <lightning-formatted-rich-text
+            value="Elite"
+            style="font-size: 36pt; font-weight: bold"
+          >
+          </lightning-formatted-rich-text>
+        </div>
+        <div style="font-size: 36pt; font-weight: bold; text-align: center">
+          $40.99/mo*
+        </div>
+        <div style="text-align: center">
+          Includes coverage for Accident & Illness Exam Fees and Rehab
+        </div>
+        <br />
+        <div style="text-align: center">
+          <lightning-button
+            variant="brand-outline"
+            label="Select"
+            title="Select"
+            class="slds-m-left_x-small"
+          ></lightning-button>
+        </div>
+        <br />
+
+        <dl class="slds-list_stacked">
+          <template for:each={elite} for:item="ess">
+            <dt
+              key={ess.Name}
+              class="slds-item_label slds-text-color_weak slds-truncate coverage"
+              title="First Label"
+            >
+              <template if:true={ess.covered}>
+                <img src={checkImg} alt="Covered" />
+              </template>
+              <template if:false={ess.covered}>
+                <img src={xImg} alt="Un Covered" />
+              </template>
+              &nbsp;&nbsp;{ess.Name}
+            </dt>
+          </template>
+        </dl>
+      </lightning-card>
+    </div>
+  </div>
+  <br />
+  <div style="text-align: center">
+    <lightning-button-group>
+      <lightning-button
+        variant="Neutral"
+        onclick={goToPrevious}
+        label="Previous"
+      ></lightning-button>
+    </lightning-button-group>
+  </div>
+</template>

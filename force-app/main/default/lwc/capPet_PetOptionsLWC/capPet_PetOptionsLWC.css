@@ -1,0 +1,55 @@
+.customUL,
+.maxWidth {
+    margin: auto;
+    max-width: 198px;
+    min-height: 39px;
+}
+.customUL li {
+    padding: 6px 0;
+}
+.iconCheck {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #368851;
+    padding: 0px 0px 0px 2px;
+}
+.iconCheck svg {
+    fill: #368851;
+    width: 12px;
+    height: 12px;
+}
+.iconLabel {
+    line-height: 22px;
+}
+.iconCancel svg{
+    width: 20px;
+    height: 20px;
+    fill: #C23934;
+}
+.titleOption {
+    font-size: 32px;
+    font-weight: 500;
+}
+.priceOption {
+    font-size: 20px;
+    font-weight: 600;
+}
+.buttonQuote {
+    border: 1px solid #D5D5D5;
+    color: #000;
+    font-weight: 600;
+}
+.pettitleoption{
+    width: 175px;
+    height: 72px;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 180%;
+    text-align: center;
+    /* identical to box height, or 72px */
+    color: #212121;
+}

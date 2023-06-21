@@ -1,0 +1,48 @@
+<!--
+  @description       : 
+  @author            : Bernie Shishaye
+  @group             : 
+  @last modified on  : 06-21-2023
+  @last modified by  : Bernie Shishaye
+-->
+<template>
+  <lightning-card>
+    <div>
+      <img class="center" src={imgUrl} alt="Pet" />
+    </div>
+    <lightning-combobox
+      name="petBreed"
+      label="What is your breed?"
+      value=""
+      placeholder="Select Breed"
+      options={petsbreed}
+      onchange={handleBreedChange}
+      required
+    ></lightning-combobox>
+    <lightning-combobox
+      name="petAge"
+      label="Pet's Age?"
+      value=""
+      placeholder="Select Age"
+      options={petsage}
+      onchange={handleAgeChange}
+      required
+    ></lightning-combobox>
+    <br />
+    <div style="text-align: center">
+      <lightning-button-group>
+        <lightning-button
+          variant="Neutral"
+          onclick={goToPrevious}
+          label="Previous"
+        ></lightning-button>
+
+        <lightning-button
+          variant="Brand"
+          onclick={goToNext}
+          label="Next"
+        ></lightning-button>
+      </lightning-button-group>
+    </div>
+  </lightning-card>
+</template>
