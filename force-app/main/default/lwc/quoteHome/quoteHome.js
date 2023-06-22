@@ -185,12 +185,11 @@ export default class QuoteHome extends LightningElement {
     saveQuote({ qt: this.currentquote })
       .then((result) => {
         this.currentquote = {};
-        console.log(result);
         // Show success messsage
         this.dispatchEvent(
           new ShowToastEvent({
             title: "Success!!",
-            message: "Account Created Successfully!!",
+            message: "Quote saved Successfully!!",
             variant: "success"
           })
         );

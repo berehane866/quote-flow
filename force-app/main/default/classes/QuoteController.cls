@@ -5,7 +5,7 @@
  * @last modified on  : 06-22-2023
  * @last modified by  : Bernie Shishaye
 **/
-public class QuoteController {
+public without sharing class QuoteController {
     
     @InvocableMethod(label='Save Quote' description='Saves a quote' category='Quote')
     public static void saveQuote(List<Quote> qts){
