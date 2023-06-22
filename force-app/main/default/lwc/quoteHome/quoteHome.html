@@ -2,7 +2,7 @@
   @description       : 
   @author            : Bernie Shishaye
   @group             : 
-  @last modified on  : 06-21-2023
+  @last modified on  : 06-22-2023
   @last modified by  : Bernie Shishaye
 -->
 <template>
@@ -42,153 +42,180 @@
     </lightning-progress-indicator>
     <template if:true={showZipCode}>
       <lightning-card>
-        <div>
-          <img class="center" src={imgZipCodeUrl} alt="ZipCode" />
-        </div>
-        <span style="text-align: center" class="spanHeader"
-          >Hi there, let's share your ZIP Code</span
-        >
-        <lightning-input
-          required
-          placeholder="Enter ZIP Code"
-          label="Enter the address which you would like to use for your policy"
-          name="zipCode"
-          value={zipcode}
-          onchange={handleZipChange}
-        ></lightning-input>
-        <br />
-        <div style="text-align: center">
-          <lightning-button-group>
-            <lightning-button
-              variant="Brand"
-              onclick={goToPetInfo}
-              label="Next"
-            ></lightning-button>
-          </lightning-button-group>
+        <div class="center2">
+          <div>
+            <img class="imgClass" src={imgZipCodeUrl} alt="ZipCode" />
+          </div>
+          <span class="instructionheader"
+            >Hi there, let's share your ZIP Code</span
+          >
+          <lightning-input
+            class="inputCss"
+            required
+            placeholder="Enter ZIP Code"
+            label="Enter the address which you would like to use for your policy"
+            name="zipCode"
+            value={currentquote.Pet_Zip_Code__c}
+            onchange={handleZipChange}
+          ></lightning-input>
+          <br />
+          <div style="text-align: center">
+            <lightning-button-group>
+              <lightning-button
+                variant="Brand"
+                onclick={goToNextZipCode}
+                label="Next"
+              ></lightning-button>
+            </lightning-button-group>
+          </div>
         </div>
       </lightning-card>
     </template>
     <template if:true={showPetInfo}>
       <lightning-card>
-        <div>
-          <img class="center" src={imgPetInfoUrl} alt="Pet" />
-        </div>
-        <span style="text-align: center" class="spanHeader"
-          >Would you like a dog or Cat quote?</span
-        >
-        <div class="slds-m-vertical_large slds-text-align_center">
-          <div class="slds-button-group" role="group">
-            <button class={dogClassBtn} name="Dog" onclick={handlePetTypeClick}>
-              Dog
-            </button>
-            <button class={catClassBtn} name="Cat" onclick={handlePetTypeClick}>
-              Cat
-            </button>
+        <div class="center2">
+          <div>
+            <img class="imgClass" src={imgPetInfoUrl} alt="Pet" />
           </div>
-        </div>
-        <lightning-input
-          required
-          placeholder="Enter Pet Name"
-          label="What is your pet's name?"
-          name="petName"
-          value={petName}
-          onchange={handlePetNameChange}
-        ></lightning-input>
-        <br />
-        <div style="text-align: center">
-          <lightning-button-group>
-            <lightning-button
-              variant="Neutral"
-              onclick={goToPreviousZipCode}
-              label="Previous"
-            ></lightning-button>
-
-            <lightning-button
-              variant="Brand"
-              onclick={goToPetBreed}
-              label="Next"
-            ></lightning-button>
-          </lightning-button-group>
+          <span class="instructionheader"
+            >Would you like a dog or Cat quote?</span
+          >
+          <div class="slds-m-vertical_large slds-text-align_center">
+            <div class="slds-button-group" role="group">
+              <button
+                class={dogClassBtn}
+                name="Dog"
+                onclick={handlePetTypeClick}
+              >
+                Dog
+              </button>
+              <button
+                class={catClassBtn}
+                name="Cat"
+                onclick={handlePetTypeClick}
+              >
+                Cat
+              </button>
+            </div>
+          </div>
+          <span class="instructionheader">What’s your pet’s name?</span>
+          <lightning-input
+            required
+            variant="label-hidden"
+            placeholder="Enter Pet Name"
+            label="What is your pet's name?"
+            name="petName"
+            value={currentquote.Pet_Name__c}
+            onchange={handlePetNameChange}
+            class="inputCss"
+          ></lightning-input>
+          <br />
+          <div style="text-align: center">
+            <lightning-button-group>
+              <lightning-button
+                variant="Neutral"
+                onclick={goToPrevPetInfo}
+                label="Previous"
+              ></lightning-button>
+              &nbsp;&nbsp;
+              <lightning-button
+                variant="Brand"
+                onclick={goToNextPetInfo}
+                label="Next"
+              ></lightning-button>
+            </lightning-button-group>
+          </div>
         </div>
       </lightning-card>
     </template>
     <template if:true={showPetBreed}>
       <lightning-card>
-        <div>
-          <img class="center" src={imgPetBreedUrl} alt="Pet" />
-        </div>
-        <lightning-combobox
-          name="petBreed"
-          label="What is your breed?"
-          value=""
-          placeholder="Select Breed"
-          options={petsbreed}
-          onchange={handleBreedChange}
-          required
-        ></lightning-combobox>
-        <lightning-combobox
-          name="petAge"
-          label="Pet's Age?"
-          value=""
-          placeholder="Select Age"
-          options={petsage}
-          onchange={handleAgeChange}
-          required
-        ></lightning-combobox>
-        <br />
-        <div style="text-align: center">
-          <lightning-button-group>
-            <lightning-button
-              variant="Neutral"
-              onclick={goToPrevPetInfo}
-              label="Previous"
-            ></lightning-button>
-
-            <lightning-button
-              variant="Brand"
-              onclick={goToNextEmail}
-              label="Next"
-            ></lightning-button>
-          </lightning-button-group>
+        <div class="center2">
+          <div>
+            <img class="imgClass" src={imgPetBreedUrl} alt="Pet" />
+          </div>
+          <div style="padding-bottom: 20px">
+            <span class="instructionheader">What's your pet's breed?</span>
+            <lightning-combobox
+              name="petBreed"
+              variant="label-hidden"
+              placeholder="Select Breed"
+              options={petsbreed}
+              value={currentquote.Pet_Breed__c}
+              onchange={handleBreedChange}
+              class="inputCss"
+              required
+            ></lightning-combobox>
+          </div>
+          <div>
+            <span class="instructionheader">What's your pet's age?</span>
+            <lightning-combobox
+              name="petAge"
+              variant="label-hidden"
+              value={currentquote.Pet_Age__c}
+              placeholder="Select Age"
+              options={petsage}
+              onchange={handleAgeChange}
+              class="inputCss"
+              required
+            ></lightning-combobox>
+          </div>
+          <br />
+          <div style="text-align: center">
+            <lightning-button-group>
+              <lightning-button
+                variant="Neutral"
+                onclick={goToPrevPetBreed}
+                label="Previous"
+              ></lightning-button>
+              <lightning-button
+                variant="Brand"
+                onclick={goToNextPetBreed}
+                label="Next"
+              ></lightning-button>
+            </lightning-button-group>
+          </div>
         </div>
       </lightning-card>
-
-      <c-pet-breed
-        onprevpetbreed={prevPetBreedHandler}
-        onnextpetbreed={nextPetBreedHandler}
-      ></c-pet-breed>
     </template>
     <template if:true={showEmail}>
       <lightning-card>
-        <div>
-          <img class="center" src={imgEmailUrl} alt="Email" />
-        </div>
-        <span style="text-align: center"
-          >To receive a copy of your quote. We respect your privacy and will not
-          sell your personal information.</span
-        >
-        <lightning-input
-          required
-          type="Email"
-          placeholder="you@email.com"
-          label="Enter the address which you would like to use for your policy"
-          name="email"
-        ></lightning-input>
-        <br />
-        <div style="text-align: center">
-          <lightning-button-group>
-            <lightning-button
-              variant="Neutral"
-              onclick={goToPetBreed}
-              label="Previous"
-            ></lightning-button>
+        <div class="center2">
+          <div>
+            <img class="center" src={imgEmailUrl} alt="Email" />
+          </div>
+          <span class="instructionheader">What’s your email address?</span>
+          <span style="text-align: center"
+            >To receive a copy of your quote. We respect your privacy and will
+            not sell your personal information.</span
+          >
+          <lightning-input
+            required
+            variant="label-hidden"
+            type="Email"
+            class="inputBox"
+            value={currentquote.Email}
+            placeholder="you@email.com"
+            label="Enter the address which you would like to use for your policy"
+            name="email"
+            onchange={onEmailChange}
+          ></lightning-input>
+          <br />
+          <div style="text-align: center">
+            <lightning-button-group>
+              <lightning-button
+                variant="Neutral"
+                onclick={goToPrevEmail}
+                label="Previous"
+              ></lightning-button>
 
-            <lightning-button
-              variant="Brand"
-              onclick={goToQuotePrices}
-              label="Next"
-            ></lightning-button>
-          </lightning-button-group>
+              <lightning-button
+                variant="Brand"
+                onclick={goToNextEmail}
+                label="Next"
+              ></lightning-button>
+            </lightning-button-group>
+          </div>
         </div>
       </lightning-card>
     </template>
