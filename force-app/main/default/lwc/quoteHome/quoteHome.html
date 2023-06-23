@@ -193,7 +193,7 @@
             required
             variant="label-hidden"
             type="Email"
-            class="inputBox"
+            class="inputCss"
             value={currentquote.Email}
             placeholder="you@email.com"
             label="Enter the address which you would like to use for your policy"
@@ -221,6 +221,11 @@
     </template>
   </lightning-card>
   <template if:true={showQuotePrices}>
-    <c-quote-prices onprevquoteprices={prevQuotePricesHandler}></c-quote-prices>
+    <c-quote-prices
+      ptype={currentquote.Pet_Type__c}
+      petage={currentquote.Pet_Age__c}
+      petbreed={currentquote.Pet_Breed__c}
+      onprevquoteprices={prevQuotePricesHandler}
+    ></c-quote-prices>
   </template>
 </template>

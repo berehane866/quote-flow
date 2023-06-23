@@ -184,7 +184,7 @@ export default class QuoteHome extends LightningElement {
     this.currentStep = "5";
     saveQuote({ qt: this.currentquote })
       .then((result) => {
-        this.currentquote = {};
+        //this.currentquote = {};
         // Show success messsage
         this.dispatchEvent(
           new ShowToastEvent({
