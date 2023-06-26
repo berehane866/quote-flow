@@ -189,7 +189,7 @@ export default class QuoteHome extends LightningElement {
         this.dispatchEvent(
           new ShowToastEvent({
             title: "Success!!",
-            message: "Quote saved Successfully!!",
+            message: "You will receive an email about the quote details!!",
             variant: "success"
           })
         );

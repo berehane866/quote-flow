@@ -2,7 +2,7 @@
   @description       : 
   @author            : Bernie Shishaye
   @group             : 
-  @last modified on  : 06-22-2023
+  @last modified on  : 06-23-2023
   @last modified by  : Bernie Shishaye
 -->
 <template>
@@ -18,16 +18,16 @@
         <template if:true={petPlan.isPlus}>
           <img src={plusImg} />&nbsp;
         </template>
-        <h2 class="card-title">{petPlan.productName}</h2>
-        &nbsp;
+        <h2>{petPlan.productName}</h2>
+
         <p class="starting">starting at</p>
-        &nbsp;
+
         <p><b>${petPlan.prodPrice}/month</b></p>
-        &nbsp;
+
         <div class="petplan-det">
           <p>{petPlan.description}</p>
           <template if:true={petPlan.isEssential}>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;
           </template>
         </div>
         <div class="card-link">
@@ -37,19 +37,20 @@
         <ul>
           <template for:each={petPlan.lstPlanCoverage} for:item="petcoverage">
             <li
+            style="margin-bottom: 8px; padding-left:18px;"
               if:true={petcoverage.isCovered}
               key={petcoverage.planCoverageId}
             >
-              <img src={covered} />{petcoverage.planCoverage}
+              <img style="width:18px; height:12px; padding-right:5px" src={covered} />{petcoverage.planCoverage}
             </li>
-            &nbsp;
+
             <li
+            style="margin-bottom: 8px; padding-left:18px;"
               if:false={petcoverage.isCovered}
               key={petcoverage.planCoverageId}
             >
-              <img src={notcovered} />{petcoverage.planCoverage}
+              <img style="width:16px; height:10px; padding-right:5px" src={notcovered} />{petcoverage.planCoverage}
             </li>
-            &nbsp;
           </template>
         </ul>
       </div>
@@ -64,6 +65,7 @@
         onclick={goToPrevious}
         label="Previous"
       ></lightning-button>
+      <lightning-button variant="Brand" label="Enroll"></lightning-button>
     </lightning-button-group>
   </div>
 </template>

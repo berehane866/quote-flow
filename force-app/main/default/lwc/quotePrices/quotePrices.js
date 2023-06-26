@@ -103,7 +103,6 @@ export default class QuotePrices extends LightningElement {
         this.planDetails = result;
       })
       .catch((error) => {
-        console.log("xxxxxxxxxx");
         // this.error = error;
         console.log(error);
         console.log("Inside error::" + error.message);
